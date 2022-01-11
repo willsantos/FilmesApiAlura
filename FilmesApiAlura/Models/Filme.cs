@@ -4,6 +4,8 @@ namespace FilmesApiAlura.Models
 {
     public class Filme
     {
+        [Key]
+        [Required]
         public int Id { get; set; }
         
         [Required(ErrorMessage ="O Campo titulo é obrigatorio")]
