@@ -1,4 +1,6 @@
-﻿using FilmesApiAlura.Data;
+﻿using AutoMapper;
+using FilmesApiAlura.Data;
+using FilmesApiAlura.Data.DTOs;
 using FilmesApiAlura.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,16 +14,19 @@ namespace FilmesApiAlura.Controllers
     public class FilmeController : ControllerBase
     {
         private FilmeContext _context;
+        private IMapper _mapper;
 
-
-        public FilmeController(FilmeContext context)
+        public FilmeController(FilmeContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpPost]
-        public IActionResult AdicionaFilme([FromBody] Filme filme)
+        public IActionResult AdicionaFilme([FromBody] CreateFilmeDto filmeDto)
         {
+            Filme filme = _mapper.Map<Filme>(filmeDto); 
+            
             _context.Filmes.Add(filme);
             _context.SaveChanges();
 
@@ -41,7 +46,8 @@ namespace FilmesApiAlura.Controllers
             Filme filme = buscaPorId(id);
             if (filme != null)
             {
-                return Ok(filme);
+                ReadFilmeDto filmeDto = _mapper.Map<ReadFilmeDto>(filme);
+                return Ok(filmeDto);
             }
             return NotFound();
 
@@ -49,7 +55,7 @@ namespace FilmesApiAlura.Controllers
 
 
         [HttpPut("{id}")]
-        public IActionResult AtualizaFilme(int id,[FromBody] Filme filmeNovo)
+        public IActionResult AtualizaFilme(int id,[FromBody] UpdateFilmeDto filmeDto)
         {
             Filme filme = buscaPorId(id);  
             if(filme == null)
@@ -57,10 +63,7 @@ namespace FilmesApiAlura.Controllers
                 return NotFound();
             }
 
-            filme.Titulo = filmeNovo.Titulo;
-            filme.Genero = filmeNovo.Genero;
-            filme.Duracao = filmeNovo.Duracao;
-            filme.Diretor = filmeNovo.Diretor;
+            _mapper.Map(filmeDto, filme);
 
             _context.SaveChanges();
 
