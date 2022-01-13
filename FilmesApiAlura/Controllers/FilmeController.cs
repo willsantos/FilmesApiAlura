@@ -3,7 +3,6 @@ using FilmesApiAlura.Data;
 using FilmesApiAlura.Data.DTOs;
 using FilmesApiAlura.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,10 +12,10 @@ namespace FilmesApiAlura.Controllers
     [Route("[controller]")]
     public class FilmeController : ControllerBase
     {
-        private FilmeContext _context;
+        private AppDbContext _context;
         private IMapper _mapper;
 
-        public FilmeController(FilmeContext context, IMapper mapper)
+        public FilmeController(AppDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -43,7 +42,7 @@ namespace FilmesApiAlura.Controllers
         [HttpGet("{id}")]
         public IActionResult RecuperaFilmePorId(int id)
         {
-            Filme filme = buscaPorId(id);
+            Filme filme = BuscaPorId(id);
             if (filme != null)
             {
                 ReadFilmeDto filmeDto = _mapper.Map<ReadFilmeDto>(filme);
@@ -57,7 +56,7 @@ namespace FilmesApiAlura.Controllers
         [HttpPut("{id}")]
         public IActionResult AtualizaFilme(int id,[FromBody] UpdateFilmeDto filmeDto)
         {
-            Filme filme = buscaPorId(id);  
+            Filme filme = BuscaPorId(id);  
             if(filme == null)
             {
                 return NotFound();
@@ -74,7 +73,7 @@ namespace FilmesApiAlura.Controllers
         [HttpDelete("{id}")]
         public IActionResult deletaFilme(int id)
         {
-            Filme filme = buscaPorId(id);
+            Filme filme = BuscaPorId(id);
             if(filme == null)
             {
                 return NotFound();
@@ -86,7 +85,7 @@ namespace FilmesApiAlura.Controllers
             return NoContent();
         }
 
-        private Filme buscaPorId(int id)
+        private Filme BuscaPorId(int id)
         {
             return _context.Filmes.FirstOrDefault(filme => filme.Id == id);
         }
