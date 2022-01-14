@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace FilmesApiAlura.Models
 {
@@ -10,5 +11,8 @@ namespace FilmesApiAlura.Models
         public string Logradouro { get; set; }
         public string Bairro { get; set; }
         public int Numero { get; set; }
+        
+        [JsonIgnore]
+        public virtual Cinema Cinema { get; set; }
     }
 }

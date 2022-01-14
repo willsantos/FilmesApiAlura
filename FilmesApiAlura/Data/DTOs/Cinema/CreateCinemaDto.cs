@@ -6,7 +6,7 @@ namespace FilmesApiAlura.Data.DTOs.Cinema
     {
         [Required(ErrorMessage="O campo nome eh obrigatorio")]
         public string Name { get; set; }
-
+        public int EnderecoId { get; set; }
 
     }
 }
