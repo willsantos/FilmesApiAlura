@@ -31,7 +31,8 @@ namespace FilmesApiAlura.Controllers
             return CreatedAtAction(nameof(RecuperaGerentesPorId), new { Id = gerente.Id }, gerente);
 
         }
-        [HttpGet("{id")]
+
+        [HttpGet("{id}")]
         public IActionResult RecuperaGerentesPorId(int id)
         {
             Gerente gerente = _context.Gerentes.FirstOrDefault(gerente => gerente.Id == id);
@@ -43,6 +44,8 @@ namespace FilmesApiAlura.Controllers
             return NotFound();
 
         }
+
+
 
 
     }

@@ -2,7 +2,8 @@
 using FilmesApiAlura.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace FilmesApiAlura.Data.DTOs
+
+namespace FilmesApiAlura
 {
     public class ReadCinemaDto
     {
@@ -12,6 +13,8 @@ namespace FilmesApiAlura.Data.DTOs
 
         [Required(ErrorMessage = "O campo nome eh obrigatorio")]
         public string Name { get; set; }
+        public Endereco Endereco { get; set; }
+        public Gerente Gerente { get; set; }
 
-    }
+}
 }

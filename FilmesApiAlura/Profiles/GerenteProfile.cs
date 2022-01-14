@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FilmesApiAlura.Data.DTOs.Gerente;
 using FilmesApiAlura.Models;
+using System.Linq;
 
 namespace FilmesApiAlura.Profiles
 {
@@ -9,7 +10,10 @@ namespace FilmesApiAlura.Profiles
         public GerenteProfile()
         {
             CreateMap<CreateGerenteDto, Gerente>();
-            CreateMap<Gerente, ReadEnderecoDto>();
+            CreateMap<Gerente, ReadGerenteDto>()
+                .ForMember(gerente => gerente.Cinemas, opts => opts
+                .MapFrom(gerente => gerente.Cinemas.Select(c => new { c.Id, c.Name, c.Endereco, c.EnderecoId }))
+                );
         }
     }
 }
