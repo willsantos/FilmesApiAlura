@@ -35,8 +35,8 @@ namespace FilmesApiAlura.Controllers
         [HttpGet("{id}")]
         public IActionResult RecuperaGerentesPorId(int id)
         {
-            Gerente gerente = _context.Gerentes.FirstOrDefault(gerente => gerente.Id == id);
-            if(gerente != null)
+            Gerente gerente = BuscaPorId(id);
+            if (gerente != null)
             {
                 ReadGerenteDto gerenteDto = _mapper.Map<ReadGerenteDto>(gerente);
                 return Ok(gerenteDto);
@@ -44,6 +44,26 @@ namespace FilmesApiAlura.Controllers
             return NotFound();
 
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult deletaFilme(int id)
+        {
+            Gerente gerente = BuscaPorId(id);
+            if (gerente == null)
+            {
+                return NotFound();
+            }
+
+            _context.Remove(gerente);
+            _context.SaveChanges();
+
+            return NoContent();
+        }
+        private Gerente BuscaPorId(int id)
+        {
+            return _context.Gerentes.FirstOrDefault(gerente => gerente.Id == id);
+        }
+
 
 
 

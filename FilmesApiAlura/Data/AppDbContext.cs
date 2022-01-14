@@ -18,7 +18,7 @@ namespace FilmesApiAlura.Data
                 .HasForeignKey<Cinema>(cinema => cinema.EnderecoId);
 
             builder.Entity<Cinema>()
-                .HasOne(cinema=> cinema.Gerente)
+                .HasOne(cinema => cinema.Gerente)
                 .WithMany(gerente => gerente.Cinemas)
                 .HasForeignKey(cinema => cinema.GerenteId);
                 
