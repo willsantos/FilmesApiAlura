@@ -1,4 +1,4 @@
-﻿namespace FilmesApiAlura.Data.DTOs.Endereco
+﻿namespace FilmesApiAlura.Data.DTOs
 {
     public class CreateEnderecoDto
     {

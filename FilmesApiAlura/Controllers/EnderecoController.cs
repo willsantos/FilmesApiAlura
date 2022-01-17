@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using FilmesApiAlura.Data;
-using FilmesApiAlura.Data.DTOs.Endereco;
+using FilmesApiAlura.Data.DTOs;
 using FilmesApiAlura.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

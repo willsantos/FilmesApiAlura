@@ -3,14 +3,16 @@ using System;
 using FilmesApiAlura.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FilmesApiAlura.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class FilmeContextModelSnapshot : ModelSnapshot
+    [Migration("20220117132920_Relacionamento entre cinema e filmes")]
+    partial class Relacionamentoentrecinemaefilmes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -115,7 +117,7 @@ namespace FilmesApiAlura.Migrations
                     b.Property<int>("FilmeId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("HorarioDeEncerramento")
+                    b.Property<DateTime>("HoarioDeEncerramento")
                         .HasColumnType("datetime");
 
                     b.HasKey("Id");

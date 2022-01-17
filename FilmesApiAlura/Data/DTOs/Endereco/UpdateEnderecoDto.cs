@@ -1,4 +1,4 @@
-﻿namespace FilmesApiAlura.Models
+﻿namespace FilmesApiAlura.Data.DTOs
 {
     public class UpdateEnderecoDto
     {

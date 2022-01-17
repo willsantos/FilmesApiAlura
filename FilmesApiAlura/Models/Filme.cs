@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace FilmesApiAlura.Models
 {
@@ -19,5 +21,7 @@ namespace FilmesApiAlura.Models
 
         [Range(10,400, ErrorMessage ="A duracao deve ter no minimo 10 e no maximo 400 minutos")]
         public int Duracao { get; set; }
+        [JsonIgnore]
+        public virtual List<Sessao> Sessoes { get; set; }
     }
 }

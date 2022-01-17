@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using FilmesApiAlura.Data.DTOs.Gerente;
+using FilmesApiAlura.Data.DTOs;
 using FilmesApiAlura.Models;
 using System.Linq;
 

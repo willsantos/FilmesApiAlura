@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using FilmesApiAlura.Data;
 using FilmesApiAlura.Data.DTOs;
-using FilmesApiAlura.Data.DTOs.Gerente;
 using FilmesApiAlura.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;

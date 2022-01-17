@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FilmesApiAlura.Models
+namespace FilmesApiAlura.Data.DTOs
 {
     public class ReadEnderecoDto
     {

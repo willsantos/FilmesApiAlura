@@ -1,4 +1,4 @@
-﻿namespace FilmesApiAlura.Data.DTOs.Gerente
+﻿namespace FilmesApiAlura.Data.DTOs
 {
     public class CreateGerenteDto
     {
